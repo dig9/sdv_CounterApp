@@ -27,8 +27,12 @@ public class CounterService extends Service {
                 try {
                     while (isRunning) {
                         count++;
-                        // Logcat에 현재 count 값 출력
                         Log.d("CounterService", "Count: " + count);
+                        // 브로드캐스트 인텐트 발송
+                        Intent broadcastIntent = new Intent("com.example.counterapp.COUNT_UPDATE");
+                        broadcastIntent.putExtra("count", count);
+                        sendBroadcast(broadcastIntent);
+
                         Thread.sleep(1000); // 1초 대기
                     }
                 } catch (InterruptedException e) {
