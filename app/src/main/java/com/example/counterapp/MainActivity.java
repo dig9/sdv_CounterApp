@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         // 브로드캐스트 리시버 등록
         IntentFilter filter = new IntentFilter();
         filter.addAction("com.example.counterapp.COUNT_UPDATE");
-        registerReceiver(countReceiver, filter);
+        registerReceiver(countReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
     }
 
     @Override

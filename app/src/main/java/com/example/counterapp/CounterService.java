@@ -31,6 +31,8 @@ public class CounterService extends Service {
                         // 브로드캐스트 인텐트 발송
                         Intent broadcastIntent = new Intent("com.example.counterapp.COUNT_UPDATE");
                         broadcastIntent.putExtra("count", count);
+                        // for Android API 34+
+                        broadcastIntent.setPackage("com.example.counterapp");
                         sendBroadcast(broadcastIntent);
 
                         Thread.sleep(1000); // 1초 대기
